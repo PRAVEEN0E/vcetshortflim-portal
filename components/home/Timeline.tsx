@@ -12,7 +12,7 @@ const steps = [
     current: true,
   },
   {
-    date: "19 OCT 2026",
+    date: "16 OCT 2026",
     title: "Registration & Film Submission Deadline",
     desc: "Strict deadline at 11:59 PM. All drive links and payment verifications must be finalized before this cutoff.",
     icon: Calendar,

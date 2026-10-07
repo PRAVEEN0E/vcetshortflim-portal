@@ -10,7 +10,7 @@ const highlights = [
     icon: Compass,
   },
   {
-    title: "₹38,000+ Total Prize Pool",
+    title: "₹50,000+ Total Prize Pool",
     desc: "Grand cash awards for Top 3 winners plus 5 individual craft categories and trophies.",
     icon: Trophy,
   },
