@@ -22,7 +22,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vcetshortfilmfest.com"), // Use actual production domain here
+  metadataBase: new URL("https://vcetshortflim-portal.vercel.app"),
   title: {
     default: "VCET State Level Short Film Competition 2026",
     template: "%s | VCET Short Film Fest",
@@ -80,6 +80,9 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  verification: {
+    google: "nhDD0G8l_3gRQLEJm8yt02va-Tq4kqAUY7faZt5IN5o",
   },
 };
 

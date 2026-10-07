@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://vcetshortfilmfest.com'; // Replace with actual production URL
+  const baseUrl = 'https://vcetshortflim-portal.vercel.app';
 
   return [
     {

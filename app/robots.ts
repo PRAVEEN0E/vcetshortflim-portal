@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/admin/', '/api/'], // Prevent crawling of admin and api routes
     },
-    sitemap: 'https://vcetshortfilmfest.com/sitemap.xml',
+    sitemap: 'https://vcetshortflim-portal.vercel.app/sitemap.xml',
   };
 }
