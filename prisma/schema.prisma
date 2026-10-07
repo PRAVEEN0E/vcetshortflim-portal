@@ -1,0 +1,71 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client"
+  output   = "./generated/client"
+}
+
+enum InstitutionType {
+  SCHOOL
+  COLLEGE
+}
+
+enum PaymentStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+enum RegistrationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Registration {
+  id                   String             @id @default(uuid())
+  registrationNumber   String             @unique
+  institutionType      InstitutionType
+  institutionName      String
+  district             String
+  city                 String
+  teamName             String
+  leaderName           String
+  leaderPhone          String
+  leaderEmail          String
+  filmTitle            String
+  directorName         String
+  filmDuration         String
+  filmDescription      String             @db.Text
+  driveLink            String
+  paymentScreenshotUrl String             @db.Text
+  upiId                String
+  paymentAmount        Int                @default(500)
+  paymentStatus        PaymentStatus      @default(PENDING)
+  registrationStatus   RegistrationStatus @default(PENDING)
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+
+  members              TeamMember[]
+
+  @@index([registrationNumber])
+  @@index([paymentStatus])
+  @@index([registrationStatus])
+  @@index([leaderPhone])
+}
+
+model TeamMember {
+  id             String       @id @default(uuid())
+  registrationId String
+  name           String
+  role           String
+  phone          String
+  email          String
+  createdAt      DateTime     @default(now())
+
+  registration   Registration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  @@index([registrationId])
+}

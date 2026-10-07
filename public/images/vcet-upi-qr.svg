@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background Card -->
+  <rect width="400" height="400" rx="24" fill="#0F111A"/>
+  <rect x="2" y="2" width="396" height="396" rx="22" fill="none" stroke="#F59E0B" stroke-opacity="0.25" stroke-width="2"/>
+
+  <!-- Inner QR White Surface -->
+  <rect x="25" y="25" width="350" height="350" rx="16" fill="#FFFFFF" filter="url(#shadow)"/>
+
+  <!-- Top-Left Target -->
+  <rect x="55" y="55" width="70" height="70" rx="8" fill="#111827"/>
+  <rect x="67" y="67" width="46" height="46" rx="4" fill="#FFFFFF"/>
+  <rect x="77" y="77" width="26" height="26" rx="2" fill="#D97706"/>
+
+  <!-- Top-Right Target -->
+  <rect x="275" y="55" width="70" height="70" rx="8" fill="#111827"/>
+  <rect x="287" y="67" width="46" height="46" rx="4" fill="#FFFFFF"/>
+  <rect x="297" y="77" width="26" height="26" rx="2" fill="#D97706"/>
+
+  <!-- Bottom-Left Target -->
+  <rect x="55" y="275" width="70" height="70" rx="8" fill="#111827"/>
+  <rect x="67" y="287" width="46" height="46" rx="4" fill="#FFFFFF"/>
+  <rect x="77" y="297" width="26" height="26" rx="2" fill="#D97706"/>
+
+  <!-- QR Pattern Grid Simulation -->
+  <!-- Row patterns -->
+  <g fill="#1F2937">
+    <!-- Row 1 -->
+    <rect x="140" y="55" width="14" height="14" rx="2"/>
+    <rect x="170" y="55" width="28" height="14" rx="2"/>
+    <rect x="215" y="55" width="14" height="14" rx="2"/>
+    <rect x="245" y="55" width="14" height="14" rx="2"/>
+    
+    <!-- Row 2 -->
+    <rect x="140" y="75" width="28" height="14" rx="2"/>
+    <rect x="185" y="75" width="14" height="14" rx="2"/>
+    <rect x="230" y="75" width="28" height="14" rx="2"/>
+
+    <!-- Row 3 -->
+    <rect x="155" y="95" width="14" height="14" rx="2"/>
+    <rect x="185" y="95" width="28" height="14" rx="2"/>
+    <rect x="230" y="95" width="14" height="14" rx="2"/>
+    
+    <!-- Row 4 -->
+    <rect x="140" y="115" width="14" height="14" rx="2"/>
+    <rect x="170" y="115" width="14" height="14" rx="2"/>
+    <rect x="200" y="115" width="28" height="14" rx="2"/>
+    <rect x="245" y="115" width="14" height="14" rx="2"/>
+
+    <!-- Row 5 (mid) -->
+    <rect x="55" y="140" width="28" height="14" rx="2"/>
+    <rect x="95" y="140" width="14" height="14" rx="2"/>
+    <rect x="125" y="140" width="28" height="14" rx="2"/>
+    <rect x="245" y="140" width="28" height="14" rx="2"/>
+    <rect x="290" y="140" width="14" height="14" rx="2"/>
+    <rect x="315" y="140" width="30" height="14" rx="2"/>
+
+    <!-- Row 6 -->
+    <rect x="70" y="160" width="14" height="14" rx="2"/>
+    <rect x="100" y="160" width="38" height="14" rx="2"/>
+    <rect x="260" y="160" width="28" height="14" rx="2"/>
+    <rect x="305" y="160" width="40" height="14" rx="2"/>
+
+    <!-- Row 7 -->
+    <rect x="55" y="180" width="14" height="14" rx="2"/>
+    <rect x="85" y="180" width="28" height="14" rx="2"/>
+    <rect x="125" y="180" width="14" height="14" rx="2"/>
+    <rect x="260" y="180" width="14" height="14" rx="2"/>
+    <rect x="290" y="180" width="28" height="14" rx="2"/>
+    <rect x="330" y="180" width="15" height="14" rx="2"/>
+
+    <!-- Row 8 -->
+    <rect x="70" y="200" width="28" height="14" rx="2"/>
+    <rect x="110" y="200" width="14" height="14" rx="2"/>
+    <rect x="275" y="200" width="28" height="14" rx="2"/>
+    <rect x="315" y="200" width="30" height="14" rx="2"/>
+
+    <!-- Row 9 -->
+    <rect x="55" y="225" width="28" height="14" rx="2"/>
+    <rect x="100" y="225" width="28" height="14" rx="2"/>
+    <rect x="140" y="225" width="28" height="14" rx="2"/>
+    <rect x="230" y="225" width="28" height="14" rx="2"/>
+    <rect x="275" y="225" width="14" height="14" rx="2"/>
+    <rect x="305" y="225" width="40" height="14" rx="2"/>
+
+    <!-- Row 10 -->
+    <rect x="70" y="245" width="14" height="14" rx="2"/>
+    <rect x="110" y="245" width="28" height="14" rx="2"/>
+    <rect x="155" y="245" width="14" height="14" rx="2"/>
+    <rect x="185" y="245" width="28" height="14" rx="2"/>
+    <rect x="230" y="245" width="14" height="14" rx="2"/>
+    <rect x="260" y="245" width="28" height="14" rx="2"/>
+    <rect x="305" y="245" width="14" height="14" rx="2"/>
+    <rect x="330" y="245" width="15" height="14" rx="2"/>
+
+    <!-- Bottom right patterns -->
+    <rect x="140" y="275" width="14" height="14" rx="2"/>
+    <rect x="170" y="275" width="28" height="14" rx="2"/>
+    <rect x="215" y="275" width="14" height="14" rx="2"/>
+    <rect x="245" y="275" width="40" height="14" rx="2"/>
+    <rect x="300" y="275" width="14" height="14" rx="2"/>
+    <rect x="330" y="275" width="15" height="14" rx="2"/>
+
+    <rect x="140" y="295" width="28" height="14" rx="2"/>
+    <rect x="185" y="295" width="40" height="14" rx="2"/>
+    <rect x="245" y="295" width="14" height="14" rx="2"/>
+    <rect x="275" y="295" width="28" height="14" rx="2"/>
+    <rect x="315" y="295" width="30" height="14" rx="2"/>
+
+    <rect x="155" y="315" width="14" height="14" rx="2"/>
+    <rect x="185" y="315" width="28" height="14" rx="2"/>
+    <rect x="230" y="315" width="28" height="14" rx="2"/>
+    <rect x="275" y="315" width="14" height="14" rx="2"/>
+    <rect x="305" y="315" width="40" height="14" rx="2"/>
+
+    <rect x="140" y="335" width="42" height="14" rx="2"/>
+    <rect x="200" y="335" width="28" height="14" rx="2"/>
+    <rect x="245" y="335" width="40" height="14" rx="2"/>
+    <rect x="300" y="335" width="45" height="14" rx="2"/>
+  </g>
+
+  <!-- Center VCET Film Fest Badge -->
+  <circle cx="200" cy="180" r="32" fill="#FFFFFF" stroke="#F59E0B" stroke-width="3" filter="url(#shadow)"/>
+  <circle cx="200" cy="180" r="26" fill="#0F111A"/>
+  
+  <!-- Film reel icon in center -->
+  <circle cx="200" cy="180" r="16" fill="none" stroke="#F59E0B" stroke-width="2"/>
+  <circle cx="200" cy="180" r="4" fill="#F59E0B"/>
+  <circle cx="200" cy="170" r="3" fill="#F59E0B"/>
+  <circle cx="200" cy="190" r="3" fill="#F59E0B"/>
+  <circle cx="190" cy="180" r="3" fill="#F59E0B"/>
+  <circle cx="210" cy="180" r="3" fill="#F59E0B"/>
+
+  <!-- Bottom UPI Label text -->
+  <text x="200" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#0D0F17" letter-spacing="1">
+    SCAN WITH ANY UPI APP • ₹500
+  </text>
+</svg>
