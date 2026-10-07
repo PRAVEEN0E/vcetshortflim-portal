@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { formatDate } from "@/lib/utils";
-import { Search, ArrowUpDown, Eye, FileText } from "lucide-react";
+import { Search, ArrowUpDown, Eye, FileText, Download } from "lucide-react";
+import * as XLSX from "xlsx";
 
 interface RegistrationWithMembers {
   id: string;
@@ -73,6 +74,40 @@ export function AdminRegistrationTable({ initialRegistrations }: AdminRegistrati
   };
 
   const hasFilters = search || instFilter !== "ALL" || paymentFilter !== "ALL" || regFilter !== "ALL";
+
+  const exportToExcel = () => {
+    // Format the data for excel
+    const excelData = filtered.map((reg) => ({
+      "Reg No": reg.registrationNumber,
+      "Team Name": reg.teamName,
+      "Leader Name": reg.leaderName,
+      "Leader Phone": reg.leaderPhone,
+      "Leader Email": reg.leaderEmail,
+      "Film Title": reg.filmTitle,
+      "Director Name": reg.directorName,
+      "Institution Type": reg.institutionType,
+      "Institution Name": reg.institutionName,
+      District: reg.district,
+      City: reg.city,
+      "Payment Status": reg.paymentStatus,
+      "Registration Status": reg.registrationStatus,
+      "Created At": new Date(reg.createdAt).toLocaleString(),
+      // Add member names by roles
+      ...reg.members.reduce((acc, member, idx) => {
+        acc[`Member ${idx + 1} Name`] = member.name;
+        acc[`Member ${idx + 1} Role`] = member.role;
+        return acc;
+      }, {} as Record<string, string>),
+    }));
+
+    // Create workbook
+    const worksheet = XLSX.utils.json_to_sheet(excelData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Registrations");
+
+    // Save file
+    XLSX.writeFile(workbook, `VCET_Registrations_${new Date().toISOString().split("T")[0]}.xlsx`);
+  };
 
   const selectStyle: React.CSSProperties = {
     padding: "8px 12px",
@@ -169,6 +204,16 @@ export function AdminRegistrationTable({ initialRegistrations }: AdminRegistrati
           >
             <ArrowUpDown size={12} color="#f5c451" />
             Sort: {sortOrder === "newest" ? "Newest" : "Oldest"}
+          </button>
+
+          <button
+            type="button"
+            onClick={exportToExcel}
+            className="btn-gold"
+            style={{ fontSize: "11px", padding: "8px 12px", whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: "5px" }}
+          >
+            <Download size={12} />
+            Export Excel
           </button>
 
           {hasFilters && (
