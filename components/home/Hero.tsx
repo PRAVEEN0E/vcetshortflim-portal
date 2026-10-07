@@ -242,7 +242,7 @@ export function Hero() {
               backgroundClip: "text",
             }}
           >
-            ₹38,000+
+            ₹50,000+
           </span>
           <span style={{ fontSize: "12px", color: "#a3a3a3", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 600 }}>
             Total Prize Pool
