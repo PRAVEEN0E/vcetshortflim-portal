@@ -5,8 +5,10 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { formatDate } from "@/lib/utils";
-import { Search, ArrowUpDown, Eye, FileText, Download } from "lucide-react";
+import { Search, ArrowUpDown, Eye, FileText, Download, FileDown } from "lucide-react";
 import * as XLSX from "xlsx";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 
 interface RegistrationWithMembers {
   id: string;
@@ -107,6 +109,40 @@ export function AdminRegistrationTable({ initialRegistrations }: AdminRegistrati
 
     // Save file
     XLSX.writeFile(workbook, `VCET_Registrations_${new Date().toISOString().split("T")[0]}.xlsx`);
+  };
+
+  const exportToPDF = () => {
+    const doc = new jsPDF("landscape");
+    
+    doc.setFontSize(16);
+    doc.text("VCET State Level Short Film Competition - Registrations", 14, 15);
+    
+    doc.setFontSize(10);
+    doc.text(`Generated on: ${new Date().toLocaleString()}`, 14, 22);
+    doc.text(`Total Records: ${filtered.length}`, 14, 28);
+
+    const tableColumn = ["Reg No", "Team Name", "Leader", "Phone", "Film Title", "Institution & District", "Payment", "Status"];
+    const tableRows = filtered.map((reg) => [
+      reg.registrationNumber,
+      reg.teamName,
+      reg.leaderName,
+      reg.leaderPhone,
+      reg.filmTitle,
+      `${reg.institutionName} (${reg.district})`,
+      reg.paymentStatus,
+      reg.registrationStatus,
+    ]);
+
+    autoTable(doc, {
+      head: [tableColumn],
+      body: tableRows,
+      startY: 34,
+      theme: "grid",
+      styles: { fontSize: 8, cellPadding: 3 },
+      headStyles: { fillColor: [20, 20, 20], textColor: [245, 196, 81] },
+    });
+
+    doc.save(`VCET_Registrations_${new Date().toISOString().split("T")[0]}.pdf`);
   };
 
   const selectStyle: React.CSSProperties = {
@@ -213,7 +249,17 @@ export function AdminRegistrationTable({ initialRegistrations }: AdminRegistrati
             style={{ fontSize: "11px", padding: "8px 12px", whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: "5px" }}
           >
             <Download size={12} />
-            Export Excel
+            Excel
+          </button>
+
+          <button
+            type="button"
+            onClick={exportToPDF}
+            className="btn-gold"
+            style={{ fontSize: "11px", padding: "8px 12px", whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: "5px" }}
+          >
+            <FileDown size={12} />
+            PDF
           </button>
 
           {hasFilters && (
