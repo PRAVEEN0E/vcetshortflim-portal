@@ -83,7 +83,7 @@ export function Footer() {
             </div>
             <p style={{ fontSize: "13px", lineHeight: 1.7, marginBottom: "1rem" }}>
               State Level Short Film Competition for school (10th–12th) and college students across Tamil Nadu. Open
-              theme, ₹38,000+ prize pool.
+              theme, ₹50,000+ prize pool.
             </p>
             <div style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "12px" }}>
               <MapPin size={14} color="#f5c451" style={{ flexShrink: 0, marginTop: "2px" }} />
