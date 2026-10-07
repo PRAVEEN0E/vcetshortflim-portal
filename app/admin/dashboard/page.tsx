@@ -1,9 +1,10 @@
 import { redirect } from "next/navigation";
 import { getAdminSession } from "@/lib/auth";
-import { getAdminDashboardData } from "@/actions/admin";
+import { getAdminDashboardData, getSystemSettings } from "@/actions/admin";
 import { AdminNavbar } from "@/components/admin/AdminNavbar";
 import { AdminStatsCards } from "@/components/admin/AdminStatsCards";
 import { AdminRegistrationTable } from "@/components/admin/AdminRegistrationTable";
+import { RegistrationLockToggle } from "@/components/admin/RegistrationLockToggle";
 import { Suspense } from "react";
 import { Loader2 } from "lucide-react";
 
@@ -19,8 +20,10 @@ export default async function AdminDashboardPage() {
   }
 
   let data;
+  let settings;
   try {
     data = await getAdminDashboardData();
+    settings = await getSystemSettings();
   } catch (err) {
     console.error("Dashboard error:", err);
     redirect("/admin/login");
@@ -41,7 +44,8 @@ export default async function AdminDashboardPage() {
       <main style={{ flex: 1, padding: "2rem 1.5rem 4rem" }}>
         <div style={{ maxWidth: "1400px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "2rem" }}>
           {/* Header */}
-          <div>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "16px" }}>
+            <div>
             <div
               style={{
                 fontSize: "10px",
@@ -77,8 +81,10 @@ export default async function AdminDashboardPage() {
               </span>
             </h1>
           </div>
+          <RegistrationLockToggle initialStatus={settings.isRegistrationOpen} />
+        </div>
 
-          {/* Stats Cards */}
+        {/* Stats Cards */}
           <AdminStatsCards stats={data.stats} />
 
           {/* Registrations Table */}

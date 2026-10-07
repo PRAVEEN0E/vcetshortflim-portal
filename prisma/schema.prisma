@@ -69,3 +69,9 @@ model TeamMember {
 
   @@index([registrationId])
 }
+
+model SystemSettings {
+  id                 String   @id @default("global")
+  isRegistrationOpen Boolean  @default(true)
+  updatedAt          DateTime @updatedAt
+}

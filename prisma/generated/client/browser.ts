@@ -27,3 +27,8 @@ export type Registration = Prisma.RegistrationModel
  * 
  */
 export type TeamMember = Prisma.TeamMemberModel
+/**
+ * Model SystemSettings
+ * 
+ */
+export type SystemSettings = Prisma.SystemSettingsModel

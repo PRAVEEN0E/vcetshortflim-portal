@@ -10,4 +10,5 @@
  */
 export type * from './models/Registration'
 export type * from './models/TeamMember'
+export type * from './models/SystemSettings'
 export type * from './commonInputTypes'

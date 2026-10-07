@@ -223,3 +223,46 @@ export async function updateRegistrationStatusAction(
     return { success: false, error: "Failed to update registration status." };
   }
 }
+
+/**
+ * Get System Settings
+ */
+export async function getSystemSettings() {
+  try {
+    const settings = await prisma.systemSettings.findUnique({
+      where: { id: "global" },
+    });
+    return settings || { isRegistrationOpen: true };
+  } catch (error) {
+    // If table doesn't exist yet (before migration), default to true
+    return { isRegistrationOpen: true };
+  }
+}
+
+/**
+ * Toggle Registration Lock
+ */
+export async function toggleRegistrationLockAction(isOpen: boolean) {
+  const session = await getAdminSession();
+  if (!session) {
+    return { success: false, error: "Unauthorized." };
+  }
+
+  try {
+    await prisma.systemSettings.upsert({
+      where: { id: "global" },
+      update: { isRegistrationOpen: isOpen },
+      create: { id: "global", isRegistrationOpen: isOpen },
+    });
+    
+    revalidatePath("/");
+    revalidatePath("/register");
+    revalidatePath("/register/payment");
+    revalidatePath("/admin/dashboard");
+    
+    return { success: true };
+  } catch (error: any) {
+    console.error("Error toggling registration lock:", error);
+    return { success: false, error: "Failed to toggle registration lock." };
+  }
+}

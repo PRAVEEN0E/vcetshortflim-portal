@@ -2,6 +2,8 @@ import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
 import { PaymentClient } from "@/components/payment/PaymentClient";
 import { getPaymentConfig } from "@/actions/payment";
+import { getSystemSettings } from "@/actions/admin";
+import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "Payment & Verification | VCET State Level Short Film Competition 2026",
@@ -10,6 +12,11 @@ export const metadata = {
 };
 
 export default async function PaymentPage() {
+  const settings = await getSystemSettings();
+  if (!settings.isRegistrationOpen) {
+    redirect("/register");
+  }
+
   const paymentConfig = await getPaymentConfig();
 
   return (

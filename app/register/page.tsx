@@ -1,7 +1,8 @@
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
 import { MultiStepRegistrationForm } from "@/components/registration/MultiStepRegistrationForm";
-import { Film, Sparkles } from "lucide-react";
+import { Film, Sparkles, Lock } from "lucide-react";
+import { getSystemSettings } from "@/actions/admin";
 
 export const metadata = {
   title: "Team Registration | VCET State Level Short Film Competition 2026",
@@ -9,7 +10,9 @@ export const metadata = {
     "Register your school or college short film for the VCET State Level Short Film Competition 2026. Entry fee ₹500 per team.",
 };
 
-export default function RegisterPage() {
+export default async function RegisterPage() {
+  const settings = await getSystemSettings();
+
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "#050505", color: "#fff" }}>
       <Navbar />
@@ -69,7 +72,42 @@ export default function RegisterPage() {
           </div>
 
           {/* Multi-step Form */}
-          <MultiStepRegistrationForm />
+          {settings.isRegistrationOpen ? (
+            <MultiStepRegistrationForm />
+          ) : (
+            <div
+              style={{
+                background: "#0d0d0d",
+                border: "1px solid rgba(255,255,255,0.07)",
+                borderRadius: "16px",
+                padding: "4rem 2rem",
+                textAlign: "center",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "16px",
+              }}
+            >
+              <div
+                style={{
+                  width: "64px",
+                  height: "64px",
+                  borderRadius: "50%",
+                  background: "rgba(239, 68, 68, 0.1)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "8px",
+                }}
+              >
+                <Lock size={32} color="#ef4444" />
+              </div>
+              <h2 style={{ fontSize: "24px", fontWeight: 700, color: "#fff" }}>Registrations are Closed!</h2>
+              <p style={{ color: "#a3a3a3", maxWidth: "400px", lineHeight: 1.6 }}>
+                We are no longer accepting new registrations for the VCET State Level Short Film Competition 2026. Thank you for your overwhelming response!
+              </p>
+            </div>
+          )}
         </div>
       </main>
 
